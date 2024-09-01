@@ -1,3 +1,17 @@
+
+Shaqeel less Lotto Machine 
+
+
+
+#Intro Page
+![alt text](image.png)
+
+#Login
+![alt text](image-1.png)
+
+#Dashboard
+![alt text](image-2.png)
+
 Java Test
 ---
 You need to design a Lotto Ticketing and Payout machine (the ones you find in the shops) which:
