@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Lotto Machine</title>
+    <style>
+        /* Resetting margins and padding */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Basic styles */
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #588a4d; /* Background color */
+            color: #000; /* Text color */
+            padding: 20px;
+            text-align: center;
+        }
+        .tech-icons {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        /* Container for centering the content */
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: left;
+        }
+
+        /* Header styles */
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 0;
+        }
+
+        .header .logo {
+            max-width: 200px;
+        }
+
+        .header .nav-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .header .nav-links a {
+            text-decoration: none;
+            color: #4da6ff;
+            font-weight: bold;
+        }
+
+        .header .nav-links a:hover {
+            text-decoration: underline;
+        }
+
+        /* Form styles */
+        form {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input[type="text"] {
+            width: calc(100% - 22px);
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            margin-bottom: 10px;
+        }
+
+        button {
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 5px; /* Adding margin between buttons */
+            transition: background-color 0.3s ease;
+        }
+
+        .tech-icons img {
+            width: 300px;
+            margin: 10px;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+
+        /* Error message styles */
+        .error {
+            color: red;
+            margin-bottom: 20px;
+        }
+
+        .section {
+            margin-bottom: 20px;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 600px) {
+            .container {
+                padding: 10px;
+            }
+
+            input[type="text"] {
+                width: calc(100% - 18px);
+            }
+
+            button {
+                width: 100%;
+                margin: 5px 0; /* Stack buttons vertically on small screens */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="header">
+            <img src="https://www.turfsport.co.za/wp-content/uploads/2024/07/Logo_TS.svg" alt="Logo" class="logo" />
+            <div class="nav-links">
+                <a href="/login">Login</a>
+                <a href="/register">Register</a>
+            </div>
+        </div>
+        <div class="section">
+            <h2>Lotto Machine Test</h2>
+        </div>
+        
+        <div class="section">
+            <p>This is a dummy program I have made using Supabase, Spring Boot, Maven, and Thymeleaf.</p>
+        </div>
+        
+        <div class="section">
+            <p>Here is the link to my GitHub and LinkedIn:</p>
+            <p>
+                <a href="https://github.com/MogammadShaqeelless16" target="_blank">GitHub</a> | 
+                <a href="https://linkedin.com/in/mogammadshaqeelless16" target="_blank">LinkedIn</a>
+            </p>
+        </div>
+        
+        <div class="section">
+            <p>
+                I didn’t go through the whole setup of doing a proepr auth system and have a user management system; the application is very simple. Register with your email and name, and login with your email and name. 😂 I know, it’s funny—no password security! 😆
+            </p>
+        </div>
+        
+        <div class="section">
+            <p>
+                I have other projects where I’m using my Supabase account, so I’m just sharing a database for this program. I was going to add more reports so you could pull reports of app usage, but thank you again for the opportunity to build this project. The database questions are in the `database.sql` file in the project.
+            </p>
+        </div>
+
+        <div class="tech-icons">
+            <!-- Technology Icons -->
+            <img src="https://getlogo.net/wp-content/uploads/2020/11/supabase-logo-vector.png" alt="Supabase">
+            <img src="https://miro.medium.com/v2/resize:fit:720/format:webp/0*R60lnmJl4hanOBaJ.png" alt="Spring Boot">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTdRgH8KvRqnkY2pF8NPiPqN5kM6EJx2u3Yew&s" alt="Maven">
+            <img src="https://elasticbeanstalk-us-east-1-851518566978.s3.amazonaws.com/permanentImages/7b60f151-9302-45bf-bd74-06b0e736bc55.png" alt="Thymeleaf">
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Register</title>
+    <style>
+        /* Resetting margins and padding */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Basic styles */
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #588a4d; /* Background color */
+            color: #000; /* Text color */
+            padding: 20px;
+            text-align: center;
+        }
+
+        /* Container styles */
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: left;
+        }
+
+        /* Header styles */
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 0;
+        }
+
+        .header .logo {
+            max-width: 200px;
+        }
+
+        .header .nav-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .header .nav-links a {
+            text-decoration: none;
+            color: #4da6ff;
+            font-weight: bold;
+        }
+
+        .header .nav-links a:hover {
+            text-decoration: underline;
+        }
+
+        /* Form styles */
+        form {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="email"] {
+            width: calc(100% - 22px);
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            margin-bottom: 10px;
+        }
+
+        button {
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 5px; /* Adding margin between buttons */
+            transition: background-color 0.3s ease;
+            background-color: #4da6ff;
+            color: #fff;
+        }
+
+        button:hover {
+            background-color: #3399ff;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 600px) {
+            .container {
+                padding: 10px;
+            }
+
+            input[type="text"],
+            input[type="email"] {
+                width: calc(100% - 18px);
+            }
+
+            button {
+                width: 100%;
+                margin: 5px 0; /* Stack buttons vertically on small screens */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="header">
+            <img src="https://www.turfsport.co.za/wp-content/uploads/2024/07/Logo_TS.svg" alt="Logo" class="logo" />
+            <div class="nav-links">
+                <a href="/">Home</a>
+                <a href="/login">Login</a>
+            </div>
+        </div>
+        <h1>Register</h1>
+        <form action="/register" method="post">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required />
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required />
+            <button type="submit">Register</button>
+        </form>
+        <div class="nav-links">
+            <a href="/">Back to Home</a>
+            <a href="/login">Go to Login</a>
+        </div>
+    </div>
+</body>
+</html>

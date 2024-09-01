@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Your Lotto Ticket</title>
+    <link rel="stylesheet" href="/resources/styles.css"/>
+</head>
+<body>
+    <h1>Your Lotto Ticket</h1>
+    
+    <p>Your Selected Numbers:</p>
+    <ul>
+        <li th:each="number : ${ticket.selectedNumbers}" th:text="${number}"></li>
+    </ul>
+
+    <p>Current Balance: R <span th:text="${balance}">0</span></p>
+    
+    <a href="/">Go Back</a>
+</body>
+</html>

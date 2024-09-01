@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Home</title>
+    <style>
+        /* Resetting margins and padding */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Specific colors for each denomination */
+        .button-r1 { background-color: #ff6f61; }
+        .button-r2 { background-color: #ffcc00; }
+        .button-r5 { background-color: #66cc99; }
+        .button-r10 { background-color: #4da6ff; }
+        .button-r50 { background-color: #ff66b2; }
+        .button-r100 { background-color: #cc66ff; }
+
+        /* Hover effects */
+        .button-r1:hover { background-color: #e55b50; }
+        .button-r2:hover { background-color: #e6b800; }
+        .button-r5:hover { background-color: #59b46e; }
+        .button-r10:hover { background-color: #3399ff; }
+        .button-r50:hover { background-color: #ff3385; }
+        .button-r100:hover { background-color: #b44cff; }
+
+        /* Basic styles */
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #588a4d; /* Background color */
+            color: #000; /* Text color */
+            padding: 20px;
+            text-align: center;
+        }
+
+        /* Container styles */
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: left;
+        }
+
+        /* Header styles */
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 0;
+        }
+
+        .header .logo {
+            max-width: 200px;
+        }
+
+        .header .nav-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .header .nav-links a {
+            text-decoration: none;
+            color: #4da6ff;
+            font-weight: bold;
+        }
+
+        .header .nav-links a:hover {
+            text-decoration: underline;
+        }
+
+        /* Form styles */
+        form {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="email"] {
+            width: calc(100% - 22px);
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            margin-bottom: 10px;
+        }
+
+        button {
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 5px; /* Adding margin between buttons */
+            transition: background-color 0.3s ease;
+            background-color: #4da6ff;
+            color: #fff;
+        }
+
+        button:hover {
+            background-color: #3399ff;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 600px) {
+            .container {
+                padding: 10px;
+            }
+
+            input[type="text"],
+            input[type="email"] {
+                width: calc(100% - 18px);
+            }
+
+            button {
+                width: 100%;
+                margin: 5px 0; /* Stack buttons vertically on small screens */
+            }
+        }
+
+        /* Error message styles */
+        .error {
+            color: red;
+            margin-bottom: 20px;
+        }
+
+        /* Success message styles */
+        .success {
+            color: green;
+            margin-bottom: 20px;
+        }
+    </style>
+    <script>
+        function refreshBalance() {
+    fetch('/getWalletBalance') // Replace with the actual endpoint to get the updated balance
+        .then(response => response.json())
+        .then(data => {
+            let balanceElement = document.getElementById("wallet-balance");
+            if (balanceElement) {
+                balanceElement.textContent = data.balance.toFixed(2);
+            }
+        })
+        .catch(error => console.error('Error fetching balance:', error));
+}
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <img src="https://www.turfsport.co.za/wp-content/uploads/2024/07/Logo_TS.svg" alt="Logo" class="logo" />
+            <div class="nav-links">
+                <a href="/logout">User Reports</a>
+                <a href="/logout">Wallet Reports</a>
+                <a href="/logout">Loyal Program Reports</a>
+                <a href="/logout">Logout</a>
+            </div>
+        </div>
+        <h1>Welcome, <span th:text="${user.name}"></span>!</h1>
+        
+        <div th:if="${user.wallet != null}">
+            <p>Balance: R <span id="wallet-balance" th:text="${user.wallet.balance}"></span></p>
+            <button type="button" class="refresh-button" onclick="refreshBalance()">Refresh Balance</button>
+        </div>
+        <div th:if="${user.wallet == null}">
+            <p>No wallet associated.</p>
+        </div>
+        
+        <h2>Add Funds</h2>
+        <form th:action="@{|/${user.id}/addFunds|}" method="post">
+            <button type="submit" name="amount" value="1" class="button-r1">Add R1</button>
+            <button type="submit" name="amount" value="2" class="button-r2">Add R2</button>
+            <button type="submit" name="amount" value="5" class="button-r5">Add R5</button>
+            <button type="submit" name="amount" value="10" class="button-r10">Add R10</button>
+            <button type="submit" name="amount" value="50" class="button-r50">Add R50</button>
+            <button type="submit" name="amount" value="100" class="button-r100">Add R100</button>
+        </form>
+
+
+        <h2>Add Withdraw</h2>
+        <form th:action="@{|/${user.id}/withdrawFunds|}" method="post">
+            <button type="submit" name="amount" value="1" class="button-r1">Add R1</button>
+            <button type="submit" name="amount" value="2" class="button-r2">Add R2</button>
+            <button type="submit" name="amount" value="5" class="button-r5">Add R5</button>
+            <button type="submit" name="amount" value="10" class="button-r10">Add R10</button>
+            <button type="submit" name="amount" value="50" class="button-r50">Add R50</button>
+            <button type="submit" name="amount" value="100" class="button-r100">Add R100</button>
+        </form>
+        
+        <h2>Buy a Lotto Ticket</h2>
+        <form action="/buySingleLotto" method="post">
+            <label for="selectedNumbers">Select Numbers (comma separated):</label>
+            <input type="text" id="selectedNumbers" name="selectedNumbers" placeholder="e.g., 1,2,3,4,5" required />
+            <button type="submit">Buy Single Lotto (R5)</button>
+        </form>
+        
+        <form action="/buyRandomLotto" method="post">
+            <button type="submit">Buy Random Lotto (R5)</button>
+        </form>
+
+        <h2>Quick Five</h2>
+        <form action="/buyQuickFive" method="post">
+            <button type="submit">Buy Quick Five (R25)</button>
+        </form>
+
+        <h2>Random Five</h2>
+        <form action="/buyRandomFive" method="post">
+            <button type="submit">Buy Random Five (R25)</button>
+        </form>
+
+        <h2>Refund</h2>
+        <form action="/refund" method="post">
+            <button type="submit">Refund Balance</button>
+        </form>
+
+        <div th:if="${error}" class="error">
+            <p>Error: <span th:text="${error}"></span></p>
+        </div>
+
+        <div th:if="${success}" class="success">
+            <p>Success: <span th:text="${success}"></span></p>
+        </div>
+
+    </div>
+</body>
+</html>
